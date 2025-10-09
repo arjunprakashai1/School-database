@@ -6,10 +6,10 @@ Q1: Find the name of the students who passed in all subject.
 - Order by student name in ascending order.
 */
 
-WITH passed_in_all AS --using CTE for clarity
+WITH passed_in_all AS 
 (
 SELECT 
-    CONCAT(students.first_name,' ',students.last_name) AS student_name, --joining first and last name
+    CONCAT(students.first_name,' ',students.last_name) AS student_name, 
     COUNT(*) AS passed_subjects 
 FROM marks
 INNER JOIN students ON
@@ -17,12 +17,12 @@ INNER JOIN students ON
 INNER JOIN subjects ON
     marks.subject_id = subjects.subject_id
 WHERE 
-    marks.mark_obtained >= 40 --passing criteria
+    marks.mark_obtained >= 40 
 GROUP BY
     student_name
 HAVING
     passed_subjects = 
-        (SELECT COUNT(DISTINCT subject_name) FROM subjects) --ensuring all subjects are passed
+        (SELECT COUNT(DISTINCT subject_name) FROM subjects) 
 )
 SELECT 
     student_name 

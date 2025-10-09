@@ -8,15 +8,15 @@ Q4: Find the names of the subject and the respective teachers who have the highe
 
 SELECT 
     subjects.subject_name,
-    CONCAT(teachers.first_name,' ',teachers.last_name) AS teacher_name, --full name
-    COUNT(*) AS failed_students --counting failed students per subject-teacher pair
+    CONCAT(teachers.first_name,' ',teachers.last_name) AS teacher_name, 
+    COUNT(*) AS failed_students 
 FROM marks
 JOIN subjects ON
     marks.subject_id = subjects.subject_id
 JOIN teachers ON
     marks.teacher_id = teachers.teacher_id
 WHERE
-    marks.mark_obtained < 40 --failing criteria
+    marks.mark_obtained < 40 
 GROUP BY
     subjects.subject_name,
     teacher_name

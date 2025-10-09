@@ -6,8 +6,8 @@ Q3: Find the number of students who failed
 */
 
 SELECT 
-    COUNT(DISTINCT student_id) AS total_failed_students --counting unique students who failed
+    COUNT(DISTINCT student_id) AS total_failed_students 
 FROM marks
-WHERE mark_obtained < 40; --failing criteria
+WHERE mark_obtained < 40; 
 
 -- Out of 20 students 14 students failed in one or more subjects.
